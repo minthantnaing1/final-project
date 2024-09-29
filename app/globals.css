@@ -40,7 +40,7 @@ h1 {
   background-color: #ffffff; /* White background */
   border: 1px solid #e0e0e0; /* Light grey border */
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@ h1 {
   border: 1px solid #e0e0e0; /* Light grey border */
 }
 
-/* Button Styles */
+/* Button Styles for Products */
 .addButton {
   background-color: #000000; /* Black background */
   color: #ffffff; /* White text */
@@ -84,24 +84,22 @@ h1 {
   opacity: 0.8;
 }
 
-/* Edit Button: Black background, white text */
 .editButton {
   background-color: #000000; /* Black background */
   color: #ffffff; /* White text */
   border: none;
-  padding: 10px 44px;
+  padding: 11px 44px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   margin-right: 12px;
-  margin-top: 10px;
+  
 }
 
 .editButton:hover {
   opacity: 0.8;
 }
 
-/* Delete Button: White background, black text, and black border */
 .deleteButton {
   background-color: #ffffff; /* White background */
   color: #000000; /* Black text */
@@ -117,7 +115,6 @@ h1 {
 .deleteButton:hover {
   background-color: #f4f4f4; /* Light grey background on hover */
 }
-
 
 /* Modal Styles */
 .modal {
@@ -163,7 +160,7 @@ select {
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .modalActions {
@@ -191,7 +188,7 @@ select {
 }
 
 .confirmButton {
-  margin-right: -22px; /* Add space between cancel and update buttons */
+  margin-right: 0px; /* Add space between cancel and update buttons */
 }
 
 .close {
@@ -216,4 +213,78 @@ select {
 
 .productDetails {
   padding: 10px;
+}
+
+/* Customer Table Styles */
+.customerTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.customerTable th,
+.customerTable td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.customerTable th {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.customerTable td {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.customerTable th:nth-child(5),
+.customerTable td:nth-child(5) {
+  width: 120px;
+}
+
+/* Aligning Edit and Delete Buttons */
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Spacing in Table Rows */
+.customerRow {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Ensure table rows have consistent spacing */
+.customerRow td {
+  padding: 10px;
+}
+
+/* Customer-specific Button Styles */
+.customerEditButton {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 6px 20px; /* Smaller size for customer page */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customerEditButton:hover {
+  opacity: 0.8;
+}
+
+.customerDeleteButton {
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  border: 1px solid #000000; /* Black border */
+  padding: 5px 10px; /* Smaller size for customer page */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customerDeleteButton:hover {
+  background-color: #f4f4f4; /* Light grey background on hover */
 }

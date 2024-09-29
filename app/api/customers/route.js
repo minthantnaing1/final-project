@@ -1,32 +1,35 @@
 import { NextResponse } from 'next/server';
-import connectDB from '../../../lib/db';
+import dbConnect from '../../../lib/db';
 import Customer from '../../../models/Customer';
 
 export async function GET() {
-  await connectDB();
-  const customers = await Customer.find({});
-  return NextResponse.json(customers);
+    await dbConnect();
+    const customers = await Customer.find({});
+    return NextResponse.json(customers);
 }
 
 export async function POST(req) {
-  const data = await req.json();
-  await connectDB();
-  const customer = new Customer(data);
-  await customer.save();
-  return NextResponse.json(customer, { status: 201 });
-}
+    await dbConnect();
+    const data = await req.json();
+    const customer = new Customer(data);
 
-export async function PUT(req) {
-  const { id } = req.url.searchParams;
-  const data = await req.json();
-  await connectDB();
-  const updatedCustomer = await Customer.findByIdAndUpdate(id, data, { new: true });
-  return NextResponse.json(updatedCustomer);
+    try {
+        await customer.save();
+        return NextResponse.json(customer, { status: 201 });
+    } catch (error) {
+        return NextResponse.json({ error: "Failed to add customer" }, { status: 400 });
+    }
 }
 
 export async function DELETE(req) {
-  const { id } = req.url.searchParams;
-  await connectDB();
-  await Customer.findByIdAndDelete(id);
-  return NextResponse.json({}, { status: 204 });
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+
+    await dbConnect();
+    try {
+        await Customer.findByIdAndDelete(id);
+        return NextResponse.json({}, { status: 204 });
+    } catch (error) {
+        return NextResponse.json({ error: "Failed to delete customer" }, { status: 400 });
+    }
 }
