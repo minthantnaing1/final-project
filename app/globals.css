@@ -1,27 +1,219 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Global styles */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  margin: 0;
+  padding: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Dashboard Styles */
+.dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+}
+
+h1 {
+  font-size: 24px;
+  color: #000000; /* Black text */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+/* Product List Styles */
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Product Card */
+.productCard {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #e0e0e0; /* Light grey border */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -10px;
+}
+
+.productCard h3 {
+  font-size: 18px;
+  margin: 10px 0 15px 0; /* Added bottom margin for more spacing */
+  color: #000000; /* Black text */
+}
+
+.productCard p {
+  font-size: 14px;
+  margin: 10px 0; /* Added more margin between details */
+  color: #333333; /* Dark grey text for subtext */
+}
+
+/* Product Image */
+.productImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* Light grey border */
+}
+
+/* Button Styles */
+.addButton {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addButton:hover {
+  opacity: 0.8;
+}
+
+/* Edit Button: Black background, white text */
+.editButton {
+  background-color: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 10px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-right: 12px;
+  margin-top: 10px;
+}
+
+.editButton:hover {
+  opacity: 0.8;
+}
+
+/* Delete Button: White background, black text, and black border */
+.deleteButton {
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  border: 1px solid #000000; /* Black border */
+  padding: 10px 34px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-left: 5px;
+  margin-bottom: fixed;
+}
+
+.deleteButton:hover {
+  background-color: #f4f4f4; /* Light grey background on hover */
+}
+
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: #ffffff; /* White modal content */
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  color: #000000; /* Black text */
+}
+
+/* Adjusting form input and select for alignment */
+.formInput, .formTextarea, select {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #e0e0e0; /* Light grey border */
+  border-radius: 5px;
+  width: 100%;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* Additional specific adjustment for the select box */
+select {
+  appearance: none; /* Removes default browser styling */
+  height: 40px; /* Matches the height of other input fields */
+}
+
+/* Rest of the formContainer styles remain the same */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancelButton, .confirmButton, .updateButton {
+  background-color: #000000; /* Black buttons */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cancelButton:hover, .confirmButton:hover, .updateButton:hover {
+  background-color: #333333; /* Darker black on hover */
+}
+
+/* Alternatively, you can specifically add space only between cancel and update buttons */
+.updateButton {
+  margin-left: 10px; /* Add space between cancel and update buttons */
+}
+
+.confirmButton {
+  margin-right: -22px; /* Add space between cancel and update buttons */
+}
+
+.close {
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000000; /* Black close button */
+}
+
+.leftAlign {
+  text-align: left;
+  margin-bottom: 15px; /* Adds space between product details */
+}
+
+.productImage {
+  width: 250px; /* Increased size */
+  height: 250px; /* Increased size */
+  object-fit: cover;
+}
+
+.productDetails {
+  padding: 10px;
 }
