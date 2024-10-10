@@ -22,14 +22,14 @@ export async function POST(req) {
 }
 
 export async function DELETE(req) {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id');
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get('id'); // Extract id from URL query params
 
-    await dbConnect();
-    try {
-        await Customer.findByIdAndDelete(id);
-        return NextResponse.json({}, { status: 204 });
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to delete customer" }, { status: 400 });
-    }
+  await dbConnect();
+  try {
+    await Customer.findByIdAndDelete(id);
+    return NextResponse.json({}, { status: 204 });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to delete customer" }, { status: 400 });
+  }
 }

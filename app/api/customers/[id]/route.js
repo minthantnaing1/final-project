@@ -29,9 +29,11 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
+    const { id } = params; // Extract id from the URL params
+
     await dbConnect();
     try {
-        await Customer.findByIdAndDelete(params.id);
+        await Customer.findByIdAndDelete(id);
         return NextResponse.json({}, { status: 204 });
     } catch (error) {
         return NextResponse.json({ error: "Failed to delete customer" }, { status: 400 });

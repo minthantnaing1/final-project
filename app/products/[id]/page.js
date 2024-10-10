@@ -54,9 +54,9 @@ export default function EditProductPage({ params }) {
     <form onSubmit={handleSubmit} className="formContainer">
       <h2>Edit Product</h2>
       <input
-        name="code"
-        defaultValue={product.code}
-        placeholder="Code"
+        name="productId"
+        defaultValue={product.productId}
+        placeholder="Product ID"
         className="formInput"
       />
       <input

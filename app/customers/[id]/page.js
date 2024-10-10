@@ -53,6 +53,12 @@ export default function EditCustomerPage({ params }) {
     <form onSubmit={handleSubmit} className="formContainer">
       <h2>Edit Customer</h2>
       <input
+        name="customerId"
+        defaultValue={customer.customerId}
+        placeholder="Customer ID"
+        className="formInput"
+      />
+      <input
         name="name"
         defaultValue={customer.name}
         placeholder="Name"

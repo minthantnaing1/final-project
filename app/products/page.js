@@ -18,7 +18,7 @@ export default function ProductsPage() {
   const createProduct = async (data) => {
     try {
       const newProductData = {
-        code: data.code || "N/A",
+        productId: data.productId || "N/A",
         name: data.name || "Unnamed Product",
         description: data.description || "No description provided",
         price: data.price || 0,
@@ -69,24 +69,25 @@ export default function ProductsPage() {
     <div className="dashboard">
       <h1>Products</h1>
       <div className="header">
-        <button className="addButton" onClick={openAddProductModal}>Add More</button>
+        <button className="addButton" onClick={openAddProductModal}>
+          Add More
+        </button>
       </div>
       <div className="productList">
         {products.map((product) => (
           <div className="productCard" key={product._id}>
             <img src={product.imageUrl} alt={product.name} className="productImage" />
             <h3>{product.name}</h3>
-
-            {/* Moved the button group directly under the product name */}
             <div className="buttonGroup">
               <Link href={`/products/${product._id}`}>
                 <button className="editButton">Edit</button>
               </Link>
-              <button className="deleteButton" onClick={() => deleteProduct(product._id)}>Delete</button>
+              <button className="deleteButton" onClick={() => deleteProduct(product._id)}>
+                Delete
+              </button>
             </div>
-
             <div className="productDetails">
-              <p className="leftAlign">Code: {product.code}</p>
+              <p className="leftAlign">Product ID: {product.productId}</p>
               <p className="leftAlign">Price (฿): {product.price}</p>
               <p className="leftAlign">Category: {product.category}</p>
               <p className="leftAlign">Description: {product.description}</p>
@@ -98,10 +99,12 @@ export default function ProductsPage() {
       {isModalOpen && (
         <div className="modal">
           <div className="modalContent">
-            <span className="close" onClick={() => setModalOpen(false)}>&times;</span>
+            <span className="close" onClick={() => setModalOpen(false)}>
+              &times;
+            </span>
             <h2>Add Product</h2>
             <form onSubmit={handleSubmit(createProduct)} className="formContainer">
-              <input {...register("code")} className="formInput" placeholder="Code" />
+              <input {...register("productId")} className="formInput" placeholder="Product ID" />
               <input {...register("name")} className="formInput" placeholder="Name" />
               <input type="number" {...register("price")} className="formInput" placeholder="Price" />
               <select {...register("category")} className="formInput">
@@ -113,8 +116,12 @@ export default function ProductsPage() {
               <textarea {...register("description")} className="formTextarea" placeholder="Description" />
               <input {...register("imageUrl")} className="formInput" placeholder="Image URL" />
               <div className="modalActions">
-                <button type="button" className="cancelButton" onClick={() => setModalOpen(false)}>Cancel</button>
-                <button type="submit" className="confirmButton">Confirm</button>
+                <button type="button" className="cancelButton" onClick={() => setModalOpen(false)}>
+                  Cancel
+                </button>
+                <button type="submit" className="confirmButton">
+                  Confirm
+                </button>
               </div>
             </form>
           </div>
